@@ -23,11 +23,6 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -35,9 +30,12 @@ h1 {
   line-height: 1.1;
 }
 
+* {
+  margin: 0;
+}
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid grey;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -54,6 +52,49 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.container > div {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  width: 95%;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 10px;
+}
+
+.selected {
+  border-bottom: 1px solid blue;
+}
+.footer {
+  border-top: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
