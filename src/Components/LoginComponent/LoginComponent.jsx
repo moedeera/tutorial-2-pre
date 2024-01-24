@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { emailValidator } from "./ValidateEmail.jsx";
 
-export const LoginComponent = ({ submitFunction }) => {
+export const LoginComponent = () => {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +26,7 @@ export const LoginComponent = ({ submitFunction }) => {
 
     setEmailError(false);
     // Redirect to profile page if no error
+    localStorage.setItem("user", true);
     navigate("/profile");
   };
 

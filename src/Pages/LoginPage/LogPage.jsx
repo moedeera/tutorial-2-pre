@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { LoginComponent } from "../../Components/LoginComponent/LoginComponent";
 import { useNavigate } from "react-router-dom";
-import { emailValidator } from "../../Components/LoginComponent/ValidateEmail";
 
 export const LogPage = () => {
   const navigate = useNavigate();
@@ -13,6 +12,7 @@ export const LogPage = () => {
     if (user) {
       // Redirect to "/profile" if "user" exists
       navigate("/profile");
+      return;
     }
   }, [navigate]);
 
