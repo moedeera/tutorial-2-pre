@@ -37,8 +37,7 @@ export const LoginForm = () => {
     setEmailError(false);
     console.log(userInfo);
   };
-  // https://uidesigndaily.com/posts/photoshop-login-log-in-authentication-mobile-day-395
-  // https://uidesigndaily.com/posts/sketch-login-log-in-authentication-mobile-day-565
+
   return (
     <div className="login-form">
       <div className="form-container">

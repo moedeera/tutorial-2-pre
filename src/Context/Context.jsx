@@ -17,7 +17,7 @@ export const SiteContextProvider = ({ children }) => {
   const [user, setUser] = useState("John Smith");
   const [navLinks, setNavLinks] = useState([
     { id: 1, name: "Home", link: "/" },
-    { id: 2, name: "About", link: "/about" },
+    { id: 2, name: "Profile", link: "/profile" },
     { id: 3, name: "Log", link: "/log" },
   ]);
 
