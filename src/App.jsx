@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SiteContextProvider } from "./Context/Context";
-
 import { Homepage } from "./Pages/Homepage/Homepage";
 import { LogPage } from "./Pages/LoginPage/LogPage";
 import { AboutPage } from "./Pages/AboutPage/AboutPage";

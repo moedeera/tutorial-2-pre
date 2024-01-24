@@ -10,17 +10,9 @@ const fetchCurrentPageName = () => {
   return page;
 };
 
-const fetchGlobalCount = () => {
-  let globalCount = localStorage.getItem("globalCount");
-  if (!globalCount) {
-    return parseInt(1, 10);
-  }
-  return parseInt(globalCount, 10);
-};
-
+// eslint-disable-next-line react/prop-types
 export const SiteContextProvider = ({ children }) => {
   const currentPage = fetchCurrentPageName();
-  const globalCount = fetchGlobalCount();
 
   const [user, setUser] = useState("John Smith");
   const [navLinks, setNavLinks] = useState([
@@ -29,13 +21,11 @@ export const SiteContextProvider = ({ children }) => {
     { id: 3, name: "Log", link: "/log" },
   ]);
 
-  const [count, setCount] = useState(globalCount);
   const [page, setPage] = useState(currentPage);
-  const [countNoStorage, setCountNoStorage] = useState(1);
 
   useEffect(() => {
-    localStorage.setItem("globalCount", count.toString());
-  }, [count]);
+    localStorage.setItem("page", JSON.stringify(page));
+  }, [page]);
 
   return (
     <siteContext.Provider
@@ -44,12 +34,8 @@ export const SiteContextProvider = ({ children }) => {
         setUser,
         navLinks,
         setNavLinks,
-        count,
-        setCount,
         page,
         setPage,
-        countNoStorage,
-        setCountNoStorage,
       }}
     >
       {children}
