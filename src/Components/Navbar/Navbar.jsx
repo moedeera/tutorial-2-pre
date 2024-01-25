@@ -1,24 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { siteContext } from "../../Context/Context";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+  const [log, setLog] = useState(false);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setLog(true);
+    }
+  }, []);
   const { navLinks, setPage, page } = useContext(siteContext);
   return (
     <div className="navbar">
-      {navLinks.map((link) => (
-        <Link
-          key={link.id}
-          to={link.link}
+      <Link to="/">Home</Link>
+      <Link to="/">Profile</Link>
+      {log ? (
+        <div
           onClick={() => {
-            setPage(link.name);
-            localStorage.setItem("page", link.name);
+            localStorage.removeItem("user");
+            setLog(false);
           }}
-          className={link.name === page ? "selected" : ""}
         >
-          {link.name}
-        </Link>
-      ))}
+          Logout
+        </div>
+      ) : (
+        <Link to="/log">Login</Link>
+      )}
     </div>
   );
 };

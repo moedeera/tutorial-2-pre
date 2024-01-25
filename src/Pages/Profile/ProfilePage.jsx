@@ -18,12 +18,13 @@ export const ProfilePage = () => {
           className="form-btn btn-logout"
           onClick={() => {
             localStorage.removeItem("user");
+            setLog(false);
           }}
         >
           Logout
         </div>
       ) : (
-        <Link className="form-btn btn-logout" to={"/"}>
+        <Link className="form-btn btn-logout" to={"/log"}>
           Login
         </Link>
       )}
