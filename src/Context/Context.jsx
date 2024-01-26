@@ -2,40 +2,29 @@ import { createContext, useEffect, useState } from "react";
 
 export const siteContext = createContext({});
 
-const fetchCurrentPageName = () => {
-  const page = localStorage.getItem("page");
-  if (!page) {
-    return "Home";
+const fetchUser = () => {
+  const user = localStorage.getItem("user");
+  if (!user) {
+    return null;
   }
-  return page;
+  return user;
 };
 
 // eslint-disable-next-line react/prop-types
 export const SiteContextProvider = ({ children }) => {
-  const currentPage = fetchCurrentPageName();
+  const fetchedUser = fetchUser();
 
-  const [user, setUser] = useState("John Smith");
-  const [navLinks, setNavLinks] = useState([
-    { id: 1, name: "Home", link: "/" },
-    { id: 2, name: "Profile", link: "/profile" },
-    { id: 3, name: "Log", link: "/log" },
-  ]);
-
-  const [page, setPage] = useState(currentPage);
+  const [user, setUser] = useState(fetchedUser);
 
   useEffect(() => {
-    localStorage.setItem("page", JSON.stringify(page));
-  }, [page]);
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   return (
     <siteContext.Provider
       value={{
         user,
         setUser,
-        navLinks,
-        setNavLinks,
-        page,
-        setPage,
       }}
     >
       {children}

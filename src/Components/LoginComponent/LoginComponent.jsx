@@ -75,7 +75,7 @@ export const LoginComponent = () => {
         </button>
         {/* ... */}
       </form>
-      <Link to="/">Home</Link>
+      Go back to <Link to="/">Homepage</Link>
     </div>
   );
 };

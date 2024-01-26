@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { siteContext } from "../../Context/Context";
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -10,7 +10,7 @@ export const Navbar = () => {
       setLog(true);
     }
   }, []);
-  const { navLinks, setPage, page } = useContext(siteContext);
+
   return (
     <div className="navbar">
       <Link to="/">Home</Link>
