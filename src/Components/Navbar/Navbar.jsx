@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { siteContext } from "../../Context/Context";
 
 export const Navbar = () => {
-  const { user, setUser } = useContext(siteContext);
-  const [log, setLog] = useState(false);
+  const { user, setUser, logState, setLogState } = useContext(siteContext);
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user && user !== null) {
-      setLog(true);
+      setLogState(true);
     }
   }, []);
 
@@ -18,16 +18,17 @@ export const Navbar = () => {
       <Link to="/">Home</Link>
       <Link to="/profile">Profile</Link>
       <Link to="/account">Account</Link>
-      {user ? (
-        <div
+      {logState ? (
+        <button
+          className="btn"
           onClick={() => {
             localStorage.removeItem("user");
-            setLog(false);
+            setLogState(false);
             setUser(false);
           }}
         >
           Logout
-        </div>
+        </button>
       ) : (
         <Link to="/log">Login</Link>
       )}
