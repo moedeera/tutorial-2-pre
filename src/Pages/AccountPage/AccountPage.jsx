@@ -1,22 +1,24 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./AccountPage.css";
 import { siteContext } from "../../Context/Context";
+import { useNavigate } from "react-router-dom";
 
 export const AccountPage = () => {
-  const { user, setUser } = useContext(siteContext);
-
-  const [logState, setLogState] = useState(false);
+  const { logState, setCurrentPage } = useContext(siteContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (user && user !== null) {
-      setLogState(true);
+    if (logState !== true) {
+      alert("You are not logged in, you will be redirected to the login page");
+      setCurrentPage("Login");
+      navigate("/Login");
     }
   }, []);
 
   return (
     <div className="container">
-      <h3>Profile Page</h3>
-      {logState ? "You are logged in" : "You are logged out"}
+      <h3>Account Page</h3>
+      <p>Welcome to the Account Page</p>
     </div>
   );
 };

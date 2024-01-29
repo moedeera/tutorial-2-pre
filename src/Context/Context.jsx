@@ -17,14 +17,24 @@ const fetchLogState = () => {
   }
   return logState;
 };
+const fetchCurrentPage = () => {
+  let data = localStorage.getItem("current-page");
+  const currentPage = JSON.parse(data);
 
+  if (!currentPage) {
+    return "Home";
+  }
+  return currentPage;
+};
 // eslint-disable-next-line react/prop-types
 export const SiteContextProvider = ({ children }) => {
   const fetchedUser = fetchUser();
   const fetchedLogState = fetchLogState();
+  const fetchedCurrentPage = fetchCurrentPage();
 
   const [user, setUser] = useState(fetchedUser);
   const [logState, setLogState] = useState(fetchedLogState);
+  const [currentPage, setCurrentPage] = useState(fetchedCurrentPage);
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
@@ -34,6 +44,10 @@ export const SiteContextProvider = ({ children }) => {
     localStorage.setItem("log-state", JSON.stringify(logState));
   }, [logState]);
 
+  useEffect(() => {
+    localStorage.setItem("current-page", JSON.stringify(currentPage));
+  }, [currentPage]);
+
   return (
     <siteContext.Provider
       value={{
@@ -41,6 +55,8 @@ export const SiteContextProvider = ({ children }) => {
         setUser,
         logState,
         setLogState,
+        currentPage,
+        setCurrentPage,
       }}
     >
       {children}

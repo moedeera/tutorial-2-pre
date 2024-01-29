@@ -1,33 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { siteContext } from "../../Context/Context";
 
 export const ProfilePage = () => {
-  const [log, setLog] = useState(false);
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setLog(true);
-    }
-  }, []);
+  const { logState, setLogState } = useContext(siteContext);
 
   return (
     <div className="container">
-      <h3>Profile Page</h3>
-      {log ? (
-        <div
-          className="form-btn btn-logout"
-          onClick={() => {
-            localStorage.removeItem("user");
-            setLog(false);
-          }}
-        >
-          Logout
-        </div>
-      ) : (
-        <Link className="form-btn btn-logout" to={"/log"}>
-          Login
-        </Link>
-      )}
+      <h1>Profile Page</h1>
+      {logState ? <h3>You are Logged in</h3> : <h3>You are Logged out</h3>}
     </div>
   );
 };

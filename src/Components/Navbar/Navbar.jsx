@@ -1,36 +1,55 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { siteContext } from "../../Context/Context";
 
 export const Navbar = () => {
-  const { user, setUser, logState, setLogState } = useContext(siteContext);
-
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user && user !== null) {
-      setLogState(true);
-    }
-  }, []);
+  const { logState, setLogState, currentPage, setCurrentPage } =
+    useContext(siteContext);
+  const links = [
+    { id: 1, name: "Home", to: "/" },
+    { id: 2, name: "Profile", to: "/profile" },
+    { id: 3, name: "Account", to: "/account" },
+  ];
 
   return (
     <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/account">Account</Link>
+      {links.map((link) => (
+        <Link
+          style={
+            link.name === currentPage ? { textDecoration: "underline" } : {}
+          }
+          onClick={() => {
+            setCurrentPage(link.name);
+          }}
+          key={link.id}
+          to={link.to}
+        >
+          {link.name}
+        </Link>
+      ))}
+
       {logState ? (
         <button
           className="btn"
           onClick={() => {
             localStorage.removeItem("user");
             setLogState(false);
-            setUser(false);
           }}
         >
           Logout
         </button>
       ) : (
-        <Link to="/log">Login</Link>
+        <Link
+          style={currentPage === "Login" ? { textDecoration: "underline" } : {}}
+          o
+          onClick={() => {
+            setCurrentPage("Login");
+          }}
+          to="/Login"
+        >
+          Login
+        </Link>
       )}
     </div>
   );
