@@ -13,7 +13,7 @@ export const AccountPage = () => {
       setCurrentPage("Login");
       navigate("/Login");
     }
-  }, []);
+  }, [logState]);
 
   return (
     <div className="container">
