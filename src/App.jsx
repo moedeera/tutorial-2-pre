@@ -6,6 +6,7 @@ import { ProfilePage } from "./Pages/ProfilePage/ProfilePage";
 import { Footer } from "./Components/Footer/Footer";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { AccountPage } from "./Pages/AccountPage/AccountPage";
+import { ReDirectPage } from "./Pages/ReDirectPage/ReDirectPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/redirect" element={<ReDirectPage />} />
             <Route path="/login" element={<LogPage />} />
           </Routes>
           <Footer />

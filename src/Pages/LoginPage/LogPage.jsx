@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import { LoginComponent } from "../../Components/LoginComponent/LoginComponent";
 import { useNavigate } from "react-router-dom";
-import { siteContext } from "../../Context/Context";
+import { SiteContext } from "../../Context/Context";
 
 export const LogPage = () => {
   const navigate = useNavigate();
 
-  const { logState } = useContext(siteContext);
+  const { logState } = useContext(SiteContext);
 
   useEffect(() => {
     // Check for "user" in localStorage

@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { emailValidator } from "./ValidateEmail.jsx";
-import { siteContext } from "../../Context/Context.jsx";
+import { SiteContext } from "../../Context/Context.jsx";
 
 export const LoginComponent = () => {
-  const { logState, setLogState, setCurrentPage } = useContext(siteContext);
+  const { logState, setLogState, setCurrentPage } = useContext(SiteContext);
 
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState(false);

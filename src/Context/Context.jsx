@@ -1,32 +1,35 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const siteContext = createContext({});
+// Naming the context with PascalCase
+export const SiteContext = createContext({});
 
 const fetchUser = () => {
-  const user = localStorage.getItem("user");
-  if (!user) {
+  // Parsing the user object from localStorage
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user || null;
+  } catch (error) {
+    console.error("Error parsing user from localStorage:", error);
     return null;
   }
-  return user;
 };
-const fetchLogState = () => {
-  const logState = localStorage.getItem("log-state");
-  if (!logState || logState === null || logState === undefined) {
-    return false;
-  }
-  return logState;
-};
-const fetchCurrentPage = () => {
-  let data = localStorage.getItem("current-page");
-  const currentPage = JSON.parse(data);
 
-  if (!currentPage) {
+const fetchLogState = () => {
+  // Explicitly converting logState to a boolean
+  const logState = localStorage.getItem("log-state");
+  return logState === "true";
+};
+
+const fetchCurrentPage = () => {
+  try {
+    let data = localStorage.getItem("current-page");
+    return JSON.parse(data) || "Home";
+  } catch (error) {
+    console.error("Error parsing current page from localStorage:", error);
     return "Home";
   }
-  return currentPage;
 };
-// eslint-disable-next-line react/prop-types
+
 export const SiteContextProvider = ({ children }) => {
   const fetchedUser = fetchUser();
   const fetchedLogState = fetchLogState();
@@ -41,7 +44,7 @@ export const SiteContextProvider = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("log-state", JSON.stringify(logState));
+    localStorage.setItem("log-state", logState.toString());
   }, [logState]);
 
   useEffect(() => {
@@ -49,7 +52,7 @@ export const SiteContextProvider = ({ children }) => {
   }, [currentPage]);
 
   return (
-    <siteContext.Provider
+    <SiteContext.Provider
       value={{
         user,
         setUser,
@@ -60,6 +63,6 @@ export const SiteContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </siteContext.Provider>
+    </SiteContext.Provider>
   );
 };

@@ -1,14 +1,15 @@
 import { useContext } from "react";
 
 import { Link } from "react-router-dom";
-import { siteContext } from "../../Context/Context";
+import { SiteContext } from "../../Context/Context";
 
 export const Navbar = () => {
   const { logState, setLogState, currentPage, setCurrentPage } =
-    useContext(siteContext);
+    useContext(SiteContext);
   const links = [
     { id: 1, name: "Home", to: "/" },
     { id: 2, name: "Profile", to: "/profile" },
+
     { id: 3, name: "Account", to: "/account" },
   ];
 
