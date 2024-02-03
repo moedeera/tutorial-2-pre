@@ -20,7 +20,7 @@ export const ReDirectPage = () => {
       </h2>
       <h3>
         When you try to access the {`"/account"`} route without being logged in,
-        you{" "}
+        you get sent here.
       </h3>
     </div>
   );

@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
+import { sometimesReturnValue } from "./FetchFunction/FetchFunction";
 // Naming the context with PascalCase
 export const SiteContext = createContext({});
 
@@ -30,6 +30,7 @@ const fetchCurrentPage = () => {
   }
 };
 
+// eslint-disable-next-line react/prop-types
 export const SiteContextProvider = ({ children }) => {
   const fetchedUser = fetchUser();
   const fetchedLogState = fetchLogState();
@@ -60,6 +61,7 @@ export const SiteContextProvider = ({ children }) => {
         setLogState,
         currentPage,
         setCurrentPage,
+        sometimesReturnValue,
       }}
     >
       {children}

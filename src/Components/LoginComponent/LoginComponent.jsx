@@ -5,7 +5,7 @@ import { emailValidator } from "./ValidateEmail.jsx";
 import { SiteContext } from "../../Context/Context.jsx";
 
 export const LoginComponent = () => {
-  const { logState, setLogState, setCurrentPage } = useContext(SiteContext);
+  const { setLogState, setCurrentPage } = useContext(SiteContext);
 
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState(false);

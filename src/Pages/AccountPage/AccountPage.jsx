@@ -18,6 +18,10 @@ export const AccountPage = () => {
     <div className="container">
       <h3>Account Page</h3>
       <p>Welcome to the Account Page</p>
+      <p>
+        This page is a redirectable page. You will stay on only if you are
+        logged in.{" "}
+      </p>{" "}
     </div>
   );
 };
