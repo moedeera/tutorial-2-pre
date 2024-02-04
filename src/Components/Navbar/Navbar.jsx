@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { SiteContext } from "../../Context/Context";
@@ -9,9 +9,11 @@ export const Navbar = () => {
   const links = [
     { id: 1, name: "Home", to: "/" },
     { id: 2, name: "Profile", to: "/profile" },
-
     { id: 3, name: "Account", to: "/account" },
   ];
+  useEffect(() => {
+    console.log("log state changed");
+  }, [logState]);
 
   return (
     <div className="navbar">
