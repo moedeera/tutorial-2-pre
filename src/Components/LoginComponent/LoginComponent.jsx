@@ -45,9 +45,6 @@ export const LoginComponent = () => {
             placeholder="Enter Your Email"
             onChange={handleChange}
           />
-          {emailError && (
-            <small className="form-error">Please enter a valid email</small>
-          )}
         </div>
         <div className="form-section">
           <label htmlFor="password">Password</label>
