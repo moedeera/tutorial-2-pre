@@ -74,7 +74,7 @@ export const LoginComponent = () => {
               type="checkbox"
               onChange={() => setShowPassword(!showPassword)}
             />
-            Show password
+            <small>Show password</small>
           </label>
         </div>
         {/* ... */}
