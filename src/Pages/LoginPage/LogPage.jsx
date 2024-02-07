@@ -9,8 +9,6 @@ export const LogPage = () => {
   const { logState } = useContext(SiteContext);
 
   useEffect(() => {
-    // Check for "user" in localStorage
-
     if (logState) {
       // Redirect to "/profile" if "user" exists
       navigate("/profile");

@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { emailValidator } from "./ValidateEmail.jsx";
+
 import { SiteContext } from "../../Context/Context.jsx";
 
 export const LoginComponent = () => {
   const { setLogState, setCurrentPage } = useContext(SiteContext);
 
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  const [emailError, setEmailError] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
@@ -20,14 +20,7 @@ export const LoginComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let valid = emailValidator(userInfo.email);
 
-    if (!valid) {
-      setEmailError(true);
-      return;
-    }
-
-    setEmailError(false);
     // Redirect to profile page if no error
 
     setLogState(true);
